@@ -3,12 +3,11 @@ import { useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global';
-import Modal from 'react-modal'
+import { NewTransactionmodal } from './components/NewTransactionModal';
 const Title = styled.h1`
   color: #8257e6;
   font-size:64px;
 `
-Modal.setAppElement('#root');
 export  function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false);
@@ -24,12 +23,10 @@ export  function App() {
     <>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
       <Dashboard/>
-      <Modal
-          isOpen={isNewTransactionModalOpen}
-          onRequestClose={handleCloseNewTransactionModal}
-        >
-          <h2>Cadastrar Informação</h2>
-        </Modal>
+      <NewTransactionmodal 
+        isOpen={isNewTransactionModalOpen}
+        onRequestClose={handleCloseNewTransactionModal}
+      />
       <GlobalStyle/>
     </>
   );
