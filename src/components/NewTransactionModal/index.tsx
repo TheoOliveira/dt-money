@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import { Container } from "./styles";
+import fechar from '../../assets/fechar.svg';
 
 interface NewTransactionModalProps {
   isOpen: boolean;
@@ -17,12 +18,15 @@ export function NewTransactionmodal({
     className="react-modal-content" 
     isOpen={isOpen} 
     onRequestClose={onRequestClose}>
+      <button type="button" onClick={onRequestClose}>
+        <img src={fechar} alt="Fechar modal" />
+      </button>
       <Container>
         <h2>Cadastrar transação</h2>
         <input type="text" placeholder="Titulo"></input>
         <input type="number" placeholder="Valor"></input>
         <input type="text" placeholder="Categoria" />
-        <input type="submit" value="" placeholder="Cadastrar"  />
+        <button type="submit">Cadastrar</button>
       </Container>
     </Modal>
   );
