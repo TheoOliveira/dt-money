@@ -3,20 +3,10 @@ import { api } from "../../services/api";
 import { Container } from "./styles";
 
 
-interface Transaction {
-  id: number;
-  title: string;
-  amount: number;
-  type: string;
-  category: string;
-  createdAt: string;
-}
+
 
 export function Table() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  useEffect(() => {
-    api.get(`transactions`).then((res) => setTransactions(res.data.transactions));
-  }, []);
+s 
   return (
     <Container>
       <table>

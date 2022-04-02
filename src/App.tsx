@@ -4,7 +4,7 @@ import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { GlobalStyle } from './styles/global';
 import { NewTransactionmodal } from './components/NewTransactionModal';
-import  TransactionsContext from "./TransactionsContext";
+import  { TransactionsProvider } from "./TransactionsContext";
 const Title = styled.h1`
   color: #8257e6;
   font-size:64px;
@@ -21,7 +21,7 @@ export  function App() {
     setIsNewTransactionModalOpen(false);
   }
   return (
-    <TransactionsContext.Provider value={[]}>
+    <TransactionsProvider>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
       <Dashboard/>
       <NewTransactionmodal 
@@ -29,7 +29,7 @@ export  function App() {
         onRequestClose={handleCloseNewTransactionModal}
       />
       <GlobalStyle/>
-    </ TransactionsContext.Provider>
+    </ TransactionsProvider>
   );
 }
 
