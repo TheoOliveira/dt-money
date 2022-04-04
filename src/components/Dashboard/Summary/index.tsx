@@ -3,7 +3,7 @@ import { Container } from './styles'
 import incomeImg from '../../../assets/entradas.svg'
 import outcomeImg from '../../../assets/saida.svg'
 import totalImg from '../../../assets/total.svg'
-import  TransactionsContext  from "../../../TransactionsContext"
+import  {TransactionsContext}  from "../../../TransactionsContext"
 
 export  function Summary() {
     const data = useContext(TransactionsContext);
