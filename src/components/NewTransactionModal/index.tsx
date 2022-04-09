@@ -19,17 +19,22 @@ export function NewTransactionmodal({
   const {createTransaction} = useContext(TransactionsContext);
   const [type, setType ] = useState('deposit');
   const [title, setTitle] = useState('')
-  const [value, setValue] = useState(0)
+  const [amount, setAmount] = useState(0)
   const [category, setCategory] = useState('')
 
-  function handleCreateNewTransaction(event: FormEvent){
+  async function handleCreateNewTransaction(event: FormEvent){
     event.preventDefault();
-    createTransaction({
+    await createTransaction({
       title,
-      amount: value,
+      amount,
       type, 
       category
     })
+    setTitle('')
+    setAmount(0)
+    setCategory('')
+    setType('deposit')
+    onRequestClose()
   }
 
   return (
@@ -44,7 +49,7 @@ export function NewTransactionmodal({
       <Container onSubmit={handleCreateNewTransaction}>
         <h2>Cadastrar transação</h2>
         <input type="text" placeholder="Titulo" value={title} onChange={event => setTitle(event.target.value)}></input>
-        <input type="number" placeholder="Valor" value={value} onChange={event => setValue(Number(event.target.value))}></input>
+        <input type="number" placeholder="Valor" value={amount} onChange={event => setAmount(Number(event.target.value))}></input>
         <TypeContainer>
           <RadioBox
             type="button"
